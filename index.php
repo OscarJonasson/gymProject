@@ -1,5 +1,32 @@
 <?php
 include 'db.php';
+
+$daySelect = $_GET['daySelect'] ?  $_GET['daySelect'] : "workouts"; 
+
+// function plusOne(){
+//     include 'db.php';
+//     $id= $_POST['id'];
+//     $weight = $_POST['weight'];
+
+//     $query = "UPDATE {$_GET['daySelect']} SET weight=$weight+1 where id = $id";
+    
+//     $result = mysqli_query($connection, $query);
+//     if (!$result) {
+//       die("Update query failed" . mysqli_error($connection));
+//     }
+// }
+
+if (isset($_POST['addOne'])){
+    $id= $_POST['id'];
+    $weight = $_POST['weight'];
+
+    $query = "UPDATE {$_GET['daySelect']} SET weight=$weight+1 where id = $id";
+    
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+      die("Update query failed" . mysqli_error($connection));
+    }
+};
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +46,7 @@ include 'db.php';
         </nav>
     </header>
     <section>
-        <form action="index.php" method="GET" onchange="this.form.submit()">
+        <form action="index.php" method="GET">
             <select name="daySelect" required>
                 <option invalid  hidden>Select day</option>
                 <option value="workouts">Day 1</option>
@@ -44,11 +71,15 @@ include 'db.php';
               
               
               ?> 
+              <form action="index.php?daySelect=<?=$daySelect?>"  method="POST">
+              <p><select name="id">
+                  <option value="<?=$id?>"><?=$id?></option>
+              </select> <input name="weight" value="<?= $weight?>"/> <?= $id, $exercise, $sets ."x". $repetitions, $weight ." kg". $musclegroup, $rir?> </p>
               
-              <p> <?= $id, $exercise, $sets ."x". $repetitions, $weight ." kg". $musclegroup, $rir?> </p>
-              <button name="addOne">+1</button>
-              <button name="addFive">+5</button>
-              <button name="addTen">+10</button>
+                  <button name="addOne">+1</button>
+                  <button name="addFive">+5</button>
+                  <button name="addTen">+10</button>
+                </form>
               
               <?php
           };
