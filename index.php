@@ -72,9 +72,9 @@ if (isset($_POST['addOne'])){
               
               ?> 
               <form action="index.php?daySelect=<?=$daySelect?>"  method="POST">
-              <p><select name="id">
+              <p><select name="id" class="hideMe">
                   <option value="<?=$id?>"><?=$id?></option>
-              </select> <input name="weight" value="<?= $weight?>"/> <?= $id, $exercise, $sets ."x". $repetitions, $weight ." kg". $musclegroup, $rir?> </p>
+              </select> <input class="hideMe" name="weight" value="<?= $weight?>"/><p name="weight"> <?=$weight?> </p> <?= $id, $exercise, $sets ."x". $repetitions, $weight ." kg". $musclegroup, $rir?> </p>
               
                   <button name="addOne">+1</button>
                   <button name="addFive">+5</button>
