@@ -11,3 +11,16 @@ body {
 .hideMe {
   display: none;
 }
+
+.create__container {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 600px;
+  width: 300px;
+  justify-content: flex-start;
+}
+
+.separator {
+  display: flex;
+  justify-content: space-between;
+}
