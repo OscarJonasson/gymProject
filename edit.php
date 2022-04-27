@@ -34,9 +34,10 @@ if(isset($_POST['submit'])){
     $weight = $_POST['weight'];
     $musclegroup = $_POST['musclegroup'];
     $rir = $_POST['rir'];
+    $id = $_POST['id'];
 
 
-$query = "INSERT into `$tablename` values(NULL,'$exercise', $sets,$reps,$weight,'$musclegroup', $rir)";
+$query = "UPDATE  `$tablename` SET exercise='$exercise', sets=$sets, repetitions=$reps, weight=$weight, musclegroup='$musclegroup', rir=$rir WHERE id=$id";
 $result = mysqli_query($connection, $query);
 // $query = "INSERT INTO todos(task,date) VALUES('$task','$date')"; 
 // $query = "INSERT into $tablename values(null, '$exercise', $sets, $reps, $weight, '$musclegroup', $rir)";
@@ -73,51 +74,9 @@ $result = mysqli_query($connection, $query);
     <section>
     <h2>Create your program</h2>
     <div class="create__container">
-        <h3>Program name</h3>
+        <h3>Choose Program</h3>
 
-        <form action="create.php?tablename=" method="POST">
-            <div class="separator">
-            <label for="nameOfTable">Program name</label>
-            <input type="text" name="nameOfTable" id="nameOfTable">
-            </div>
-            <button name="table">Submit</button>
-        </form>
-
-        <form action="create.php?tablename=<?=$_GET['tablename']?>" method="POST">
-           <input type="text" name="tablename" value=<?=$_GET['tablename']?>>
-            <div class="separator">
-                <label for="exercise">Exercise</label>
-                <input type="text" name="exercise" id="exercise" required>
-            </div>
-            <div class="separator">
-                <label for="sets">Sets</label>
-                <input type="number" name="sets" id="sets" required>
-            </div>
-            <div class="separator">
-                <label for="reps">Reps</label>
-                <input type="number" name="repetitions" id="reps" required>
-            </div>
-            <div class="separator">
-                <label for="weight">Weight</label>
-                <input type="number" name="weight" id="weight" required>
-            </div>
-            <div class="separator">
-
-                <label for="musclegroup">Muscle group</label>
-                <select type="text" name="musclegroup" id="musclegroup" required>
-                    <option value="upper body">Upper Body</option>
-                    <option value="lower body">Lower Body</option>
-                </select>
-            </div>
-            <div class="separator">
-                <label for="rir">RIR</label>
-                <input type="number" name="rir" id="rir">
-            </div>
-            <button name="submit">Submit</button>
-        </form>
-
-
-        <form action="create.php" action="GET">
+        <form action="edit.php" action="GET">
             <select name="tablename">
            <?php $query = "SHOW TABLES";
                 $result = mysqli_query($connection, $query);
@@ -134,7 +93,9 @@ $result = mysqli_query($connection, $query);
             <button>Submit</button>
         </form>
 
-        <section class="listCurrent">
+        <h3>Edit Program</h3>
+
+
         <?php 
         $query = "SELECT * from {$_GET['tablename']}";
         $result = mysqli_query($connection, $query);
@@ -151,13 +112,46 @@ $result = mysqli_query($connection, $query);
               $rir = $row['rir'];  
               ?> 
 
-              <p>
-                <?= $id, $exercise, $sets ."x". $repetitions, $weight ." kg". $musclegroup, $rir?> </p>
-              <?php
+        <form action="edit.php?tablename=<?=$_GET['tablename']?>" method="POST">
+           <input class="hideMe" type="text" name="tablename" value=<?=$_GET['tablename']?>>
+           <select name="id" class="hideMe">
+                  <option value="<?=$id?>"><?=$id?></option>
+              </select>
+            <div class="separator">
+                <label for="exercise">Exercise</label>
+                <input type="text" name="exercise" id="exercise" value=<?=$exercise ?> required>
+            </div>
+            <div class="separator">
+                <label for="sets">Sets</label>
+                <input type="number" name="sets" id="sets" value=<?=$sets?> required>
+            </div>
+            <div class="separator">
+                <label for="reps">Reps</label>
+                <input type="number" name="repetitions" id="reps" value=<?=$repetitions?> required>
+            </div>
+            <div class="separator">
+                <label for="weight">Weight</label>
+                <input type="number" name="weight" id="weight" value=<?=$weight?> required>
+            </div>
+            <div class="separator">
+                <label for="musclegroup">Muscle group</label>
+                <select type="text" name="musclegroup" id="musclegroup" required>
+                    <option value=<?= $musclegroup ?>><?=$musclegroup?></option>
+                    <option value="upper body">Upper Body</option>
+                    <option value="lower body">Lower Body</option>
+                </select>
+            </div>
+            <div class="separator">
+                <label for="rir">RIR</label>
+                <input type="number" name="rir" id="rir" value=<?= $rir ?>>
+            </div>
+            <button name="submit">Submit</button>
+        </form>
+        <?php
           };
-        ?>
-        </section>
+          ?>
 
+        
     </div>
 
     </section>

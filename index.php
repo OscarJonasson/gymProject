@@ -67,8 +67,9 @@ if (isset($_POST['addTen'])){
 <body>
     <header>
         <nav>
-            Programs
-            <a href="./create.php">Create</a>
+           <a href="./index.php?tablename=<?=$_GET['tablename']?>" > Programs </a>
+            <a href="./create.php?tablename=<?=$_GET['tablename']?>"> Create </a>
+            <a href="./edit.php?tablename=<?=$_GET['tablename']?>"> Edit </a>
         </nav>
     </header>
     <section>
