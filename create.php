@@ -81,21 +81,23 @@ $result = mysqli_query($connection, $query);
           </ul>
         </nav>
     </header>
-    <section>
+    <section class="createProgram">
     <h2>Create your program</h2>
     <div class="create__container">
         <h3>Program name</h3>
 
-        <form action="create.php?tablename=" method="POST">
+        <form class="createTable" action="create.php?tablename=" method="POST">
             <div class="separator">
             <label for="nameOfTable">Program name</label>
             <input type="text" name="nameOfTable" id="nameOfTable">
             </div>
-            <button name="table">Submit</button>
+            <div class="createProgram__btn" >
+                <button name="table">Submit</button>
+            </div>
         </form>
 
-        <form action="create.php?tablename=<?=$_GET['tablename']?>" method="POST">
-           <input type="text" name="tablename" value=<?=$_GET['tablename']?>>
+        <form class="createProgram__fields" action="create.php?tablename=<?=$_GET['tablename']?>" method="POST">
+           <input class="hideMe" type="text" name="tablename" value=<?=$_GET['tablename']?>>
             <div class="separator">
                 <label for="exercise">Exercise</label>
                 <input type="text" name="exercise" id="exercise" required>
@@ -116,19 +118,21 @@ $result = mysqli_query($connection, $query);
 
                 <label for="musclegroup">Muscle group</label>
                 <select type="text" name="musclegroup" id="musclegroup" required>
-                    <option value="upper body">Upper Body</option>
-                    <option value="lower body">Lower Body</option>
+                    <option value="upper_body">Upper Body</option>
+                    <option value="lower_body">Lower Body</option>
                 </select>
             </div>
             <div class="separator">
                 <label for="rir">RIR</label>
                 <input type="number" name="rir" id="rir">
             </div>
-            <button name="submit">Submit</button>
+            <div class="createProgram__btn">
+                <button name="submit">Submit</button>
+            </div>
         </form>
 
 
-        <form action="create.php" action="GET">
+        <form class="selectCurrent" action="create.php" action="GET">
             <select name="tablename">
            <?php $query = "SHOW TABLES";
                 $result = mysqli_query($connection, $query);
@@ -145,7 +149,8 @@ $result = mysqli_query($connection, $query);
             <button>Submit</button>
         </form>
 
-        <section class="listCurrent">
+        <section class="entries entriesCreate">
+        <ul class="currentProgram">
         <?php 
         $query = "SELECT * from {$_GET['tablename']}";
         $result = mysqli_query($connection, $query);
@@ -160,13 +165,14 @@ $result = mysqli_query($connection, $query);
               $weight = $row['weight'];
               $musclegroup = $row['musclegroup'];
               $rir = $row['rir'];  
-              ?> 
-
-              <p>
-                <?= $id, $exercise, $sets ."x". $repetitions, $weight ." kg". $musclegroup, $rir?> </p>
-              <?php
+              ?>     
+                  <li>
+                      <?=  $exercise .' '. $sets ."x". $repetitions .' '. $weight ."Kg "?>
+                    </li>
+                    <?php
           };
-        ?>
+          ?>
+          </ul>
         </section>
 
     </div>

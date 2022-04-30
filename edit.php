@@ -82,19 +82,20 @@ $result = mysqli_query($connection, $query);
           </ul>
         </nav>
     </header>
-    <section>
-    <h2>Create your program</h2>
+    <section class="editProgram">
     <div class="create__container">
         <h3>Choose Program</h3>
 
-        <form action="edit.php" action="GET">
-            <select name="tablename">
-           <?php $query = "SHOW TABLES";
+        <form  action="edit.php" action="GET">
+            <div class="editProgram__select">
+
+                <select name="tablename">
+                    <?php $query = "SHOW TABLES";
                 $result = mysqli_query($connection, $query);
                 if(!$result){
                     die('No exercises to get');
-                  };
-                  while($row = mysqli_fetch_assoc($result)){
+                };
+                while($row = mysqli_fetch_assoc($result)){
                     $tablesin = $row['Tables_in_gym'];
                     ?>
                   <option value=<?= $tablesin ?>><?=$tablesin?></option>
@@ -102,6 +103,7 @@ $result = mysqli_query($connection, $query);
                 } ?>
             </select>
             <button>Submit</button>
+        </div>
         </form>
 
         <h3>Edit Program</h3>
@@ -123,7 +125,7 @@ $result = mysqli_query($connection, $query);
               $rir = $row['rir'];  
               ?> 
 
-        <form action="edit.php?tablename=<?=$_GET['tablename']?>" method="POST">
+        <form class="editProgram__entry" action="edit.php?tablename=<?=$_GET['tablename']?>" method="POST">
            <input class="hideMe" type="text" name="tablename" value=<?=$_GET['tablename']?>>
            <select name="id" class="hideMe">
                   <option value="<?=$id?>"><?=$id?></option>
@@ -148,15 +150,17 @@ $result = mysqli_query($connection, $query);
                 <label for="musclegroup">Muscle group</label>
                 <select type="text" name="musclegroup" id="musclegroup" required>
                     <option value=<?= $musclegroup ?>><?=$musclegroup?></option>
-                    <option value="upper body">Upper Body</option>
-                    <option value="lower body">Lower Body</option>
+                    <option value="upper_body">Upper Body</option>
+                    <option value="lower_body">Lower Body</option>
                 </select>
             </div>
             <div class="separator">
                 <label for="rir">RIR</label>
                 <input type="number" name="rir" id="rir" value=<?= $rir ?>>
             </div>
-            <button name="submit">Submit</button>
+            <div class="createProgram__btn">
+                <button name="submit">Submit</button>
+            </div>
         </form>
         <?php
           };

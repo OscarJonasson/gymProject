@@ -41,6 +41,9 @@ a {
 
 button {
   font-family: var(--font);
+  cursor: pointer;
+  height: 2rem;
+  width: 4rem;
 }
 
 input,
@@ -64,6 +67,7 @@ select {
   padding: 3px;
   margin: 1rem 1rem 0 0;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .exercises {
@@ -96,13 +100,14 @@ select {
   display: flex;
   flex-flow: column nowrap;
   height: 600px;
-  width: 300px;
+  width: 350px;
   justify-content: flex-start;
 }
 
 .separator {
   display: flex;
   justify-content: space-between;
+  margin: 10px;
 }
 
 .entries {
@@ -130,8 +135,91 @@ select {
   font-size: 1.5rem;
 }
 
-.entry__text {
+/* #toggle:checked .entry {
+  background: yellowgreen;
+} */
+
+/* CREATE */
+
+.createProgram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  padding-top: 5rem;
 }
 
-.entry__buttons {
+.createProgram input,
+select {
+  height: 2rem;
+  width: 12rem;
+  padding: 3px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid #b9b9bf;
+}
+
+.createTable {
+  border-bottom: solid 2px #b9b9bf;
+  padding: 6px;
+}
+
+.currentProgram {
+  list-style: decimal;
+  line-height: 1.5;
+}
+
+.createProgram__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.createProgram__fields {
+  border-bottom: solid 2px #b9b9bf;
+  padding: 6px;
+}
+.entriesCreate {
+  padding: 0.5rem;
+  line-height: 1.5;
+  font-size: 1.3rem;
+}
+
+.selectCurrent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+/* EDIT */
+
+.editProgram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5rem;
+}
+
+.editProgram input {
+  height: 2rem;
+  width: 12rem;
+  padding: 3px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid #b9b9bf;
+}
+
+.editProgram__select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  border-bottom: solid 2px #b9b9bf;
+  padding: 6px;
+}
+
+.editProgram__entry {
+  border-bottom: solid 2px #b9b9bf;
+  padding: 6px;
 }

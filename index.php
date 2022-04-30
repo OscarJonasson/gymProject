@@ -1,4 +1,7 @@
 <?php
+
+use Symfony\Contracts\EventDispatcher\Event;
+
 include 'db.php';
 
 // $daySelect = $_GET['daySelect'] ?  $_GET['daySelect'] : "workouts"; 
@@ -15,6 +18,11 @@ include 'db.php';
 //       die("Update query failed" . mysqli_error($connection));
 //     }
 // }
+
+function activeOnClick(){
+  
+
+}
 
 
 
@@ -117,12 +125,12 @@ if (isset($_POST['addTen'])){
           $musclegroup = $row['musclegroup'];
           $rir = $row['rir'];         
           ?> 
-              <form class="entry" action="index.php?tablename=<?=$_GET['tablename']?>"  method="POST">
-                
+              <form class="entry" action="index.php?tablename=<?=$_GET['tablename']?>"  method="POST" >
+                <input type="checkbox" id="toggle" />
                 <p class="hideMe"><select name="id" >
                   <option value="<?=$id?>"><?=$id?></option>
                 </select> <input  name="weight" value="<?= $weight?>"/></p>
-                <p class="entry__text"> <?= $exercise .' '. $sets ."x". $repetitions .' '. $weight ."Kg "?> </p>
+                <p class="entry__text"> <?= $exercise .' '. $sets ."x". $repetitions .' '. $weight ."Kg"?> </p>
                 <div class="entry__buttons">
                   <button class="addButton" name="addOne">+1</button>
                   <button class="addButton" name="addFive">+5</button>
