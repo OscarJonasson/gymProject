@@ -66,15 +66,26 @@ if (isset($_POST['addTen'])){
 </head>
 <body>
     <header>
+      <a href="/gymProject">
+        <img src="./weightlogo.svg" alt="barbell"/>
+      </a>
         <nav>
-           <a href="./index.php?tablename=<?=$_GET['tablename']?>" > Programs </a>
-            <a href="./create.php?tablename=<?=$_GET['tablename']?>"> Create </a>
-            <a href="./edit.php?tablename=<?=$_GET['tablename']?>"> Edit </a>
+          <ul class="links">
+            <li class="links__link">
+              <a href="./index.php?tablename=<?=$_GET['tablename']?>" > Programs </a>
+            </li>
+            <li class="links__link">
+              <a href="./create.php?tablename=<?=$_GET['tablename']?>"> Create </a>
+            </li>
+            <li class="links__link">
+              <a href="./edit.php?tablename=<?=$_GET['tablename']?>"> Edit </a>
+            </li>
+          </ul>
         </nav>
     </header>
-    <section>
+    <section class="exercises">
     <form action="index.php" action="GET">
-            <select name="tablename">
+            <select class="selectProgram" name="tablename">
            <?php $query = "SHOW TABLES";
                 $result = mysqli_query($connection, $query);
                 if(!$result){
@@ -89,42 +100,45 @@ if (isset($_POST['addTen'])){
             </select>
             <button>Submit</button>
         </form>
-        
-        <?php 
+
+        <div class="entries">
+          <?php 
         $query = "SELECT * from {$_GET['tablename']}";
         $result = mysqli_query($connection, $query);
         if(!$result){
-            die('No exercises to get');
-          };
-          while($row = mysqli_fetch_assoc($result)){
-              $id = $row['id'];
-              $exercise = $row['exercise'];
-              $sets = $row['sets'];
-              $repetitions = $row['repetitions'];
-              $weight = $row['weight'];
-              $musclegroup = $row['musclegroup'];
-              $rir = $row['rir'];
-              
-              
-              ?> 
-              <form action="index.php?tablename=<?=$_GET['tablename']?>"  method="POST">
-              <p><select name="id" class="hideMe">
+          die('No exercises to get');
+        };
+        while($row = mysqli_fetch_assoc($result)){
+          $id = $row['id'];
+          $exercise = $row['exercise'];
+          $sets = $row['sets'];
+          $repetitions = $row['repetitions'];
+          $weight = $row['weight'];
+          $musclegroup = $row['musclegroup'];
+          $rir = $row['rir'];         
+          ?> 
+              <form class="entry" action="index.php?tablename=<?=$_GET['tablename']?>"  method="POST">
+                
+                <p class="hideMe"><select name="id" >
                   <option value="<?=$id?>"><?=$id?></option>
-              </select> <input class="hideMe" name="weight" value="<?= $weight?>"/><p name="weight"> <?=$weight?> </p> <?= $id, $exercise, $sets ."x". $repetitions, $weight ." kg". $musclegroup, $rir?> </p>
-              
-                  <button name="addOne">+1</button>
-                  <button name="addFive">+5</button>
-                  <button name="addTen">+10</button>
-                </form>
+                </select> <input  name="weight" value="<?= $weight?>"/></p>
+                <p class="entry__text"> <?= $exercise .' '. $sets ."x". $repetitions .' '. $weight ."Kg "?> </p>
+                <div class="entry__buttons">
+                  <button class="addButton" name="addOne">+1</button>
+                  <button class="addButton" name="addFive">+5</button>
+                  <button class="addButton" name="addTen">+10</button>
+                </div>
+              </form>
               
               <?php
           };
-        ?>
+          ?>
+          </div>
 
-    </section>
+</section>
 
     <footer>
-        Copyright
+        Copyright Pattern https://heropatterns.com/
     </footer>
 </body>
 </html>

@@ -65,10 +65,21 @@ $result = mysqli_query($connection, $query);
 </head>
 <body>
 <header>
+      <a href="/gymProject">
+        <img src="./weightlogo.svg" alt="barbell"/>
+      </a>
         <nav>
-        <a href="./index.php?tablename=<?=$_GET['tablename']?>" > Programs </a>
-            <a href="./create.php?tablename=<?=$_GET['tablename']?>"> Create </a>
-            <a href="./edit.php?tablename=<?=$_GET['tablename']?>"> Edit </a>
+          <ul class="links">
+            <li class="links__link">
+              <a href="./index.php?tablename=<?=$_GET['tablename']?>" > Programs </a>
+            </li>
+            <li class="links__link">
+              <a href="./create.php?tablename=<?=$_GET['tablename']?>"> Create </a>
+            </li>
+            <li class="links__link">
+              <a href="./edit.php?tablename=<?=$_GET['tablename']?>"> Edit </a>
+            </li>
+          </ul>
         </nav>
     </header>
     <section>

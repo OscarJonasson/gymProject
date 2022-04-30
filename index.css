@@ -1,11 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+:root {
+  --font: 'Nunito', sans-serif;
+}
+
 body {
-  background-color: cadetblue;
+  /* background: linear-gradient(to bottom, #8a90aa, #8d99ae); */
+  background-image: url('./bodytexture.svg'),
+    linear-gradient(to bottom, #8a90aa, #8d99ae);
+  background-size: 340%;
+  background-attachment: fixed;
+  background-color: #b9b9bf;
+  font-family: var(--font);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 6vh;
+  background-image: url('./headertexture.svg'),
+    linear-gradient(to bottom, #2b2d42, #3b3e5c);
+  background-size: 200%;
+  border-bottom: 0.5px solid black;
+  padding: 0.6rem 2rem;
+  box-shadow: 0 0 5px black;
+  position: fixed;
+  width: 100%;
+}
+
+a {
+  color: #edf2f4;
+}
+
+button {
+  font-family: var(--font);
+}
+
+input,
+select {
+  font: var(--font);
+}
+
+.links {
+  display: flex;
+  flex-flow: row nowrap;
+  list-style: none;
+}
+
+.links__link {
+  padding: 0 1rem;
+}
+
+.selectProgram {
+  height: 2rem;
+  width: 9rem;
+  padding: 3px;
+  margin: 1rem 1rem 0 0;
+  border-radius: 4px;
+}
+
+.exercises {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  padding-top: 5rem;
+}
+
+.addButton {
+  height: 2rem;
+  width: 4rem;
+  border-radius: 4px;
+  border: 1px solid black;
+  margin: 0 0.4rem;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+.addButton:active {
+  background-color: darkgray;
 }
 
 .hideMe {
@@ -23,4 +103,35 @@ body {
 .separator {
   display: flex;
   justify-content: space-between;
+}
+
+.entries {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  max-width: 90vw;
+  box-shadow: inset 0 0 4px black;
+  border-radius: 6px;
+  margin: 2rem 0;
+  background-color: rgba(0, 0, 0, 0.095);
+}
+
+.entry {
+  height: 9rem;
+  width: 20rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid black;
+  background: #9da3c17a;
+  margin: 2rem;
+  flex-flow: column nowrap;
+  border-radius: 6px;
+  font-size: 1.5rem;
+}
+
+.entry__text {
+}
+
+.entry__buttons {
 }
