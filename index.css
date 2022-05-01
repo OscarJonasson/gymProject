@@ -41,6 +41,7 @@ main {
   align-items: center;
   flex-flow: column nowrap;
 }
+
 footer {
   display: flex;
   justify-content: center;
