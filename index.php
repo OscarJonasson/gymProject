@@ -9,7 +9,7 @@ setcookie('tablename',$cookieTable,time() + 86400, "/");
 
 
 
-$defaultName = $_GET['tablename'] ?? $_COOKIE['tablename'];
+$defaultName = $_GET['tablename'] ?? $_COOKIE['tablename'] ?? 'workouts';
 
 
 

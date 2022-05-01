@@ -4,7 +4,7 @@ include 'db.php';
 $cookieTable =  $_GET['tablename'] ?? 'workouts';
 setcookie('tablename',$cookieTable,time() + 86400, "/"); 
 
-$defaultName = $_GET['tablename'] ?? $_COOKIE['tablename'];
+$defaultName = $_GET['tablename'] ?? $_COOKIE['tablename'] ?? 'workouts';
 
 function test_inputs($data){
     $data = trim($data);
