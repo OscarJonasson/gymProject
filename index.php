@@ -3,28 +3,13 @@
 use Symfony\Contracts\EventDispatcher\Event;
 
 include 'db.php';
+$cookieTable =  $_GET['tablename'] ?? 'workouts';
+setcookie('tablename',$cookieTable,time() + 86400, "/"); 
 
-// $daySelect = $_GET['daySelect'] ?  $_GET['daySelect'] : "workouts"; 
 
-// function plusOne(){
-//     include 'db.php';
-//     $id= $_POST['id'];
-//     $weight = $_POST['weight'];
 
-//     $query = "UPDATE {$_GET['daySelect']} SET weight=$weight+1 where id = $id";
-    
-//     $result = mysqli_query($connection, $query);
-//     if (!$result) {
-//       die("Update query failed" . mysqli_error($connection));
-//     }
-// }
 
-// function activeOnClick(){
-  
-
-// }
-
-$defaultName = $_GET['tablename'] ?? 'workouts';
+$defaultName = $_GET['tablename'] ?? $_COOKIE['tablename'];
 
 
 
@@ -76,25 +61,13 @@ if (isset($_POST['addTen'])){
 </head>
 <body>
     <header>
-      <a href="/gymProject">
-        <img src="./weightlogo.svg" alt="barbell"/>
-      </a>
-        <nav>
-          <ul class="links">
-            <li class="links__link">
-              <a href="./index.php?tablename=<?=$defaultName?>" > Programs </a>
-            </li>
-            <li class="links__link">
-              <a href="./create.php?tablename=<?=$defaultName?>"> Create </a>
-            </li>
-            <li class="links__link">
-              <a href="./edit.php?tablename=<?=$defaultName?>"> Edit </a>
-            </li>
-          </ul>
-        </nav>
+  <?php
+  include './nav.php';
+  ?>
     </header>
     <section class="exercises">
     <form action="index.php" action="GET">
+
             <select class="selectProgram" name="tablename">
            <?php $query = "SHOW TABLES";
                 $result = mysqli_query($connection, $query);
@@ -128,7 +101,8 @@ if (isset($_POST['addTen'])){
           $rir = $row['rir'];         
           ?> 
               <form class="entry" action="index.php?tablename=<?=$defaultName?>"  method="POST" >
-                <input type="checkbox" id="toggle" />
+              
+
                 <p class="hideMe"><select name="id" >
                   <option value="<?=$id?>"><?=$id?></option>
                 </select> <input  name="weight" value="<?= $weight?>"/></p>
@@ -138,6 +112,7 @@ if (isset($_POST['addTen'])){
                   <button class="addButton" name="addFive">+5</button>
                   <button class="addButton" name="addTen">+10</button>
                 </div>
+              
               </form>
               
               <?php
@@ -150,5 +125,14 @@ if (isset($_POST['addTen'])){
     <footer>
         Copyright Pattern https://heropatterns.com/
     </footer>
+    <script>
+     const entries = document.querySelectorAll('.entry');
+     console.log(entries);
+        entries.forEach(entry =>{
+          entry.addEventListener('click', () =>{
+            entry.classList.toggle('completed');
+          })
+        }) 
+    </script>
 </body>
 </html>

@@ -1,6 +1,11 @@
 <?php 
 include 'db.php';
 
+$cookieTable =  $_GET['tablename'] ?? 'workouts';
+setcookie('tablename',$cookieTable,time() + 86400, "/"); 
+
+$defaultName = $_GET['tablename'] ?? $_COOKIE['tablename'];
+
 function test_inputs($data){
     $data = trim($data);
     $data = stripslashes($data);
@@ -65,22 +70,9 @@ $result = mysqli_query($connection, $query);
 </head>
 <body>
 <header>
-      <a href="/gymProject">
-        <img src="./weightlogo.svg" alt="barbell"/>
-      </a>
-        <nav>
-          <ul class="links">
-            <li class="links__link">
-              <a href="./index.php?tablename=<?=$_GET['tablename']?>" > Programs </a>
-            </li>
-            <li class="links__link">
-              <a href="./create.php?tablename=<?=$_GET['tablename']?>"> Create </a>
-            </li>
-            <li class="links__link">
-              <a href="./edit.php?tablename=<?=$_GET['tablename']?>"> Edit </a>
-            </li>
-          </ul>
-        </nav>
+<?php
+  include './nav.php';
+  ?>
     </header>
     <section class="editProgram">
     <div class="create__container">
@@ -110,7 +102,7 @@ $result = mysqli_query($connection, $query);
 
 
         <?php 
-        $query = "SELECT * from {$_GET['tablename']}";
+        $query = "SELECT * from {$defaultName}";
         $result = mysqli_query($connection, $query);
         if(!$result){
             die('No exercises to get');

@@ -1,6 +1,11 @@
 <?php 
 include 'db.php';
 
+$cookieTable =  $_GET['tablename'] ?? 'workouts';
+setcookie('tablename',$cookieTable,time() + 86400, "/"); 
+
+$defaultName = $_GET['tablename'] ?? $_COOKIE['tablename'];
+
 function test_inputs($data){
     $data = trim($data);
     $data = stripslashes($data);
@@ -64,22 +69,9 @@ $result = mysqli_query($connection, $query);
 </head>
 <body>
 <header>
-      <a href="/gymProject">
-        <img src="./weightlogo.svg" alt="barbell"/>
-      </a>
-        <nav>
-          <ul class="links">
-            <li class="links__link">
-              <a href="./index.php?tablename=<?=$_GET['tablename']?>" > Programs </a>
-            </li>
-            <li class="links__link">
-              <a href="./create.php?tablename=<?=$_GET['tablename']?>"> Create </a>
-            </li>
-            <li class="links__link">
-              <a href="./edit.php?tablename=<?=$_GET['tablename']?>"> Edit </a>
-            </li>
-          </ul>
-        </nav>
+<?php
+  include './nav.php';
+  ?>
     </header>
     <section class="createProgram">
     <h2>Create your program</h2>
@@ -96,8 +88,8 @@ $result = mysqli_query($connection, $query);
             </div>
         </form>
 
-        <form class="createProgram__fields" action="create.php?tablename=<?=$_GET['tablename']?>" method="POST">
-           <input class="hideMe" type="text" name="tablename" value=<?=$_GET['tablename']?>>
+        <form class="createProgram__fields" action="create.php?tablename=<?=$defaultName?>" method="POST">
+           <input class="hideMe" type="text" name="tablename" value=<?=$defaultName?>>
             <div class="separator">
                 <label for="exercise">Exercise</label>
                 <input type="text" name="exercise" id="exercise" required>
@@ -152,7 +144,7 @@ $result = mysqli_query($connection, $query);
         <section class="entries entriesCreate">
         <ul class="currentProgram">
         <?php 
-        $query = "SELECT * from {$_GET['tablename']}";
+        $query = "SELECT * from {$defaultName}";
         $result = mysqli_query($connection, $query);
         if(!$result){
             die('No exercises to get');

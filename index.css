@@ -135,10 +135,9 @@ select {
   font-size: 1.5rem;
 }
 
-/* #toggle:checked .entry {
-  background: yellowgreen;
-} */
-
+.completed {
+  background: rgba(129, 193, 34, 0.665);
+}
 /* CREATE */
 
 .createProgram {
