@@ -19,10 +19,12 @@ include 'db.php';
 //     }
 // }
 
-function activeOnClick(){
+// function activeOnClick(){
   
 
-}
+// }
+
+$defaultName = $_GET['tablename'] ?? 'workouts';
 
 
 
@@ -80,13 +82,13 @@ if (isset($_POST['addTen'])){
         <nav>
           <ul class="links">
             <li class="links__link">
-              <a href="./index.php?tablename=<?=$_GET['tablename']?>" > Programs </a>
+              <a href="./index.php?tablename=<?=$defaultName?>" > Programs </a>
             </li>
             <li class="links__link">
-              <a href="./create.php?tablename=<?=$_GET['tablename']?>"> Create </a>
+              <a href="./create.php?tablename=<?=$defaultName?>"> Create </a>
             </li>
             <li class="links__link">
-              <a href="./edit.php?tablename=<?=$_GET['tablename']?>"> Edit </a>
+              <a href="./edit.php?tablename=<?=$defaultName?>"> Edit </a>
             </li>
           </ul>
         </nav>
@@ -111,7 +113,7 @@ if (isset($_POST['addTen'])){
 
         <div class="entries">
           <?php 
-        $query = "SELECT * from {$_GET['tablename']}";
+        $query = "SELECT * from {$defaultName}";
         $result = mysqli_query($connection, $query);
         if(!$result){
           die('No exercises to get');
@@ -125,7 +127,7 @@ if (isset($_POST['addTen'])){
           $musclegroup = $row['musclegroup'];
           $rir = $row['rir'];         
           ?> 
-              <form class="entry" action="index.php?tablename=<?=$_GET['tablename']?>"  method="POST" >
+              <form class="entry" action="index.php?tablename=<?=$defaultName?>"  method="POST" >
                 <input type="checkbox" id="toggle" />
                 <p class="hideMe"><select name="id" >
                   <option value="<?=$id?>"><?=$id?></option>
