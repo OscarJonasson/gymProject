@@ -122,9 +122,10 @@ if (isset($_POST['addTen'])){
 
 </section>
 
-    <footer>
-        Copyright Pattern https://heropatterns.com/
-    </footer>
+<?php
+    include './footer.php';
+    ?>
+
     <script>
      const entries = document.querySelectorAll('.entry');
      console.log(entries);

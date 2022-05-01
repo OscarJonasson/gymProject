@@ -35,6 +35,20 @@ header {
   width: 100%;
 }
 
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  height: 5rem;
+}
+
 a {
   color: #edf2f4;
 }
@@ -75,7 +89,7 @@ select {
   justify-content: center;
   align-items: center;
   flex-flow: column;
-  padding-top: 5rem;
+  padding-top: 6rem;
 }
 
 .addButton {
@@ -99,9 +113,9 @@ select {
 .create__container {
   display: flex;
   flex-flow: column nowrap;
-  height: 600px;
-  width: 350px;
+  width: 360px;
   justify-content: flex-start;
+  margin-bottom: 2rem;
 }
 
 .separator {
@@ -113,6 +127,7 @@ select {
 .entries {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-flow: row wrap;
   max-width: 90vw;
   box-shadow: inset 0 0 4px black;
@@ -145,7 +160,7 @@ select {
   justify-content: center;
   align-items: center;
   flex-flow: column nowrap;
-  padding-top: 5rem;
+  padding-top: 6rem;
 }
 
 .createProgram input,
@@ -166,6 +181,7 @@ select {
 .currentProgram {
   list-style: decimal;
   line-height: 1.5;
+  padding: 1rem;
 }
 
 .createProgram__btn {
@@ -179,16 +195,18 @@ select {
   padding: 6px;
 }
 .entriesCreate {
-  padding: 0.5rem;
+  padding: 1rem 2rem;
   line-height: 1.5;
   font-size: 1.3rem;
+  margin: 0;
+  margin-bottom: 0.5rem;
 }
 
 .selectCurrent {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
 }
 
 /* EDIT */
@@ -197,7 +215,7 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 5rem;
+  padding-top: 6rem;
 }
 
 .editProgram input {

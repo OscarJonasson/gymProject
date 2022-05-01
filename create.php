@@ -73,6 +73,7 @@ $result = mysqli_query($connection, $query);
   include './nav.php';
   ?>
     </header>
+    <main>
     <section class="createProgram">
     <h2>Create your program</h2>
     <div class="create__container">
@@ -140,6 +141,7 @@ $result = mysqli_query($connection, $query);
             </select>
             <button>Submit</button>
         </form>
+        </section>
 
         <section class="entries entriesCreate">
         <ul class="currentProgram">
@@ -165,11 +167,15 @@ $result = mysqli_query($connection, $query);
           };
           ?>
           </ul>
-        </section>
+        </div>    
 
-    </div>
-
+        
     </section>
+</main>
+
+<?php
+    include './footer.php';
+    ?>
     
 </body>
 </html>
