@@ -1,3 +1,25 @@
+<?php
+include './sessions.php';
+
+if($loginCheck){
+    header('Location: index.php');
+    exit;
+}
+
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    if($username == $user_name  and $password == $pass_word){
+        login();
+        header('Location: index.php');
+        exit;
+    }
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,16 +34,16 @@
 <main class="container">
     <div class="entries">
         <h1>LOGIN</h1>
-        <form>
+        <form class="login" method="POST" action="./login.php">
             <div class="separator">
                 <label for="username">Username</label>
-                <input type="text" id="username">
+                <input type="text" id="username" name="username">
             </div>
             <div class="separator">
                 <label for="username">Password</label>
-                <input type="text" id="password">
+                <input type="password" id="password" name="password">
             </div>
-            <button class="alignme" name="login">Submit</button>
+            <button>Submit</button>
         </form>
     </div>
 </main>

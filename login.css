@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 body {
   /* background: linear-gradient(to bottom, #8a90aa, #8d99ae); */
   background-image: url('./bodytexture.svg'),
@@ -8,6 +10,9 @@ body {
   font-family: var(--font);
 }
 
+:root {
+  --font: 'Nunito', sans-serif;
+}
 footer {
   display: flex;
   justify-content: center;
@@ -16,9 +21,17 @@ footer {
   height: 5rem;
 }
 
+input {
+  font: var(--font);
+  height: 2rem;
+  width: 10rem;
+  padding-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid #b9b9bf;
+}
+
 .separator {
-  display: flex;
-  justify-content: space-around;
   margin: 10px;
 }
 
@@ -41,6 +54,9 @@ footer {
   align-items: center;
 }
 
-.alignme {
-  align-self: center;
+.login {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: column nowrap;
 }

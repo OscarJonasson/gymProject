@@ -11,6 +11,9 @@
             </li>
             <li class="links__link">
               <a href="./edit.php?tablename=<?=$defaultName?>"> Edit </a>
+            </li >   
+            <li class="links__link">
+            <a href="./logout.php"> Logout </a>
             </li>
           </ul>
         </nav>

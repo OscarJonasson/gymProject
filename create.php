@@ -1,5 +1,7 @@
 <?php 
-include 'db.php';
+include './sessions.php';
+require_login($loginCheck);
+include './db.php';
 
 $cookieTable =  $_GET['tablename'] ?? 'workouts';
 setcookie('tablename',$cookieTable,time() + 86400, "/"); 
