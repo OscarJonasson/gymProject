@@ -40,10 +40,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 <input type="text" id="username" name="username">
             </div>
             <div class="separator">
-                <label for="username">Password</label>
+                <label for="password">Password</label>
                 <input type="password" id="password" name="password">
             </div>
-            <button>Submit</button>
+            <button>Log In</button>
         </form>
     </div>
 </main>

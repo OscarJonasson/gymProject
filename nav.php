@@ -1,5 +1,5 @@
 <a href="./index.php?tablename=<?=$defaultName?>">
-        <img src="./weightlogo.svg" alt="barbell"/>
+        <img class="logo" src="./weightlogo.svg" alt="barbell"/>
       </a>
         <nav>
           <ul class="links">

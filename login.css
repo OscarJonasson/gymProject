@@ -21,6 +21,13 @@ footer {
   height: 5rem;
 }
 
+button {
+  font-family: var(--font);
+  cursor: pointer;
+  height: 2rem;
+  width: 4rem;
+}
+
 input {
   font: var(--font);
   height: 2rem;
@@ -31,8 +38,13 @@ input {
   border: 1px solid #b9b9bf;
 }
 
+h1 {
+  color: #ececec;
+}
 .separator {
   margin: 10px;
+  font-size: 1.5rem;
+  color: #ececec;
 }
 
 .entries {

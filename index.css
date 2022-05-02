@@ -241,3 +241,12 @@ select {
   border-bottom: solid 2px #b9b9bf;
   padding: 6px;
 }
+
+@media (max-width: 800px) {
+  .links__link {
+    padding: 0.3rem;
+  }
+  .logo {
+    width: 50px;
+  }
+}
