@@ -15,6 +15,15 @@ function test_inputs($data){
     return $data;
 }
 
+if(isset($_POST['delete'])){
+    $id = $_POST['id'];
+    $query = "DELETE from $defaultName where id= $id";
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+      die("Delete query failed" . mysqli_error($connection));
+    }
+}
+
 if(isset($_POST['table'])){
     $nameOfTable = test_inputs($_POST['nameOfTable']);
 
@@ -155,6 +164,7 @@ $result = mysqli_query($connection, $query);
             </div>
             <div class="createProgram__btn">
                 <button name="submit">Submit</button>
+                <button name="delete">Delete</button>
             </div>
         </form>
         <?php
