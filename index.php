@@ -67,8 +67,8 @@ if (isset($_POST['addTen'])){
   ?>
     </header>
     <section class="exercises">
+      
     <form action="index.php" action="GET">
-
             <select class="selectProgram" name="tablename">
            <?php $query = "SHOW TABLES";
                 $result = mysqli_query($connection, $query);

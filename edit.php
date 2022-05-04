@@ -9,7 +9,7 @@ setcookie('tablename',$cookieTable,time() + 86400 *3, "/");
 $defaultName = $_GET['tablename'] ?? $_COOKIE['tablename'] ?? 'workouts';
 
 function test_inputs($data){
-    $data = trim($data);
+    // $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
