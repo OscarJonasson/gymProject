@@ -8,3 +8,8 @@ PHP task for school
 
 ## Tech
   -myPhpAdmin
+  
+  
+  ### Default data
+  
+  You can use the gymCreateStatement.sql file to create a sample database.
