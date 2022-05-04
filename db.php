@@ -1,4 +1,5 @@
-<?php $host = 'db';
+<?php 
+    $host = 'db';
     $dbname = 'gym'; // database name loginapp or 7
     $dbuser = 'root'; //db username
     $dbpassword = 'lionPass'; // db pass

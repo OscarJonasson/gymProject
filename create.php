@@ -114,8 +114,8 @@ $result = mysqli_query($connection, $query);
 
                 <label for="musclegroup">Muscle group</label>
                 <select type="text" name="musclegroup" id="musclegroup" required>
-                    <option value="upper_body">Upper Body</option>
-                    <option value="lower_body">Lower Body</option>
+                    <option value="Upper Body">Upper Body</option>
+                    <option value="Lower Body">Lower Body</option>
                 </select>
             </div>
             <div class="separator">
@@ -138,7 +138,7 @@ $result = mysqli_query($connection, $query);
                   while($row = mysqli_fetch_assoc($result)){
                     $tablesin = $row['Tables_in_gym'];
                     ?>
-                  <option value=<?= $tablesin ?>><?=$tablesin?></option>
+                  <option value="<?= $tablesin ?>"><?=$tablesin?></option>
                   <?php
                 } ?>
             </select>

@@ -9,7 +9,7 @@ setcookie('tablename',$cookieTable,time() + 86400 *3, "/");
 $defaultName = $_GET['tablename'] ?? $_COOKIE['tablename'] ?? 'workouts';
 
 function test_inputs($data){
-    // $data = trim($data);
+    $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
@@ -102,7 +102,7 @@ $result = mysqli_query($connection, $query);
                 while($row = mysqli_fetch_assoc($result)){
                     $tablesin = $row['Tables_in_gym'];
                     ?>
-                  <option value=<?= $tablesin ?>><?=$tablesin?></option>
+                  <option value="<?= $tablesin ?>"><?=$tablesin?></option>
                   <?php
                 } ?>
             </select>
@@ -136,7 +136,7 @@ $result = mysqli_query($connection, $query);
               </select>
             <div class="separator">
                 <label for="exercise">Exercise</label>
-                <input type="text" name="exercise" id="exercise" value=<?=$exercise ?> required>
+                <input type="text" name="exercise" id="exercise" value="<?=$exercise ?>" required>
             </div>
             <div class="separator">
                 <label for="sets">Sets</label>
@@ -153,9 +153,9 @@ $result = mysqli_query($connection, $query);
             <div class="separator">
                 <label for="musclegroup">Muscle group</label>
                 <select type="text" name="musclegroup" id="musclegroup" required>
-                    <option value=<?= $musclegroup ?>><?=$musclegroup?></option>
-                    <option value="upper_body">Upper Body</option>
-                    <option value="lower_body">Lower Body</option>
+                    <option value="<?=$musclegroup ?>"><?=$musclegroup?></option>
+                    <option value="Upper Body">Upper Body</option>
+                    <option value="Lower Body">Lower Body</option>
                 </select>
             </div>
             <div class="separator">

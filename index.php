@@ -78,7 +78,7 @@ if (isset($_POST['addTen'])){
                   while($row = mysqli_fetch_assoc($result)){
                     $tablesin = $row['Tables_in_gym'];
                     ?>
-                  <option value=<?= $tablesin ?>><?=$tablesin?></option>
+                  <option value="<?= $tablesin ?>"><?=$tablesin?></option>
                   <?php
                 } ?>
             </select>
