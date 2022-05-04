@@ -81,6 +81,7 @@ if (isset($_POST['addTen'])){
                   <option value="<?= $tablesin ?>"><?=$tablesin?></option>
                   <?php
                 } ?>
+                <option value="<?=$defaultName?>" selected disabled><?=$defaultName?></option>
             </select>
             <button>Submit</button>
         </form>

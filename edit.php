@@ -105,6 +105,7 @@ $result = mysqli_query($connection, $query);
                   <option value="<?= $tablesin ?>"><?=$tablesin?></option>
                   <?php
                 } ?>
+                <option value="<?=$defaultName?>" selected disabled><?=$defaultName?></option>
             </select>
             <button>Submit</button>
         </div>
