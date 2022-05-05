@@ -4,7 +4,7 @@ include './sessions.php';
 require_login($loginCheck);
 include './db.php';
 $cookieTable =  $_GET['tablename'] ?? 'workouts';
-setcookie('tablename',$cookieTable,time() + 86400, "/"); 
+setcookie('tablename',$cookieTable,time() + 86400 * 3, "/"); 
 
 
 
